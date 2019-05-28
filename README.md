@@ -22,17 +22,16 @@ El desarrollo del banco se hizo de la siguiente forma:
 
 ![Screenshot](Flujo_banco.png)
 
+Al ejecutar el programa se pide un argumento que es el numero de cajas que se activaran, "`./Banco #`", con este argumento se inicializa la interfaz grafica de del programa. 
+
+![Screenshot](interfaz.png)
+ 
+En este mismo proceso se inicializa el semaforo que se destinara a las cajas, `cajas = sem_open(name_shm, O_CREAT, 0644, num_cajas)` en esta seccion, **num_cajas** es el argumento que se recibe al ejecutar el programa.
 
 
 # Conclusiones:
 	
-- El banco no tiene limite de clientes inscritos mas alla de la capacidad del computador, al ser manejado con listas en python proveen una facilidad de tratamiento de datos muy grande
-
-- La comunicacion entre QT y python es mas facil (concepto propio del grupo) que la comunicacion entre QT y C++, la forma de escribir las funciones y de realizar las conexiones es mas intuitiva y facil.
-
-- La plataforma QT es una gran herramienta grafica, aunque no exploramos todas las posibilidades que esta ofrece, si se observo que es muy amplia y robusta.
-
-- La comunicacion por tuberias entre estos dos lenguajes de programacion es un poco complicada debido al cambio de sintaxis, sin embargo es muy util y entendible conforme a la experiencia y al uso de esta.
+- No fue posible inicializar los semaforos en la misma seccion de codigo, entre las multiples pruebas que se hicieron, la que mejor resulto fue inicializar un semaforo en la interfas del "mainwindow" y el otro semaforo en el "main".
 
 
 	
