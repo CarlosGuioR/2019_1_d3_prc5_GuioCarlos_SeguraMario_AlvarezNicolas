@@ -22,9 +22,10 @@ El desarrollo del banco se hizo de la siguiente forma:
 
 ![Screenshot](Flujo_banco.png)
 
-Al ejecutar el programa se pide un argumento que es el numero de cajas que se activaran, "`./Banco #`", con este argumento se inicializa la interfaz grafica de del programa. 
+Al ejecutar el programa se pide un argumento que es el numero de cajas que se activaran, `./Banco #`, con este argumento se inicializa la interfaz grafica de del programa. 
 
 ![Screenshot](interfaz.png)
+
 (ejemplo con 5 cajas)
  
 En este mismo proceso se inicializa el semaforo que se destinara a las cajas, `cajas = sem_open(name_shm, O_CREAT, 0644, num_cajas)` en esta seccion, **num_cajas** es el argumento que se recibe al ejecutar el programa y **name_shm** es el nombre de el semaforo que es "smp".
@@ -85,13 +86,15 @@ La **bandera2** en 1 indica que el cliente acabo el proceso que tenia que realiz
 
 Los procesos antes descritos se realizan dentro de un `while(true)` para que el sistema este siempre pendiente de clientes entrantes o clientes que desocupan cajas. En este punto se ha explicado todo lo referente al proceso competente al banco, ahora se explicara el proceso del cliente.
 
+
+
 ## CLIENTE
 
 En general, el proceso del cliente sigue el siguiente diagrama:
 
 ![Screenshot](Flujo_cliente.png)
 
-En el proceso del cliete es necesario recibir dos argumentos, el primero es el nombre del cliente y el segundo es el numero de cedula o identificacion con el que se identificara el cliente.
+En el proceso del cliete es necesario recibir dos argumentos, el primero es el nombre del cliente y el segundo es el numero de cedula o identificacion con el que se identificara el cliente de la siguiente forma `./prueba carlos 123456789`.
 
 Despues de recibir los parametros del nombre e identificacion se procede a acceder a la memoria compartida y a los semaforos:
 
