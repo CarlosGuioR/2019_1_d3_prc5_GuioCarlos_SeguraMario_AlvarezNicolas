@@ -25,8 +25,24 @@ El desarrollo del banco se hizo de la siguiente forma:
 Al ejecutar el programa se pide un argumento que es el numero de cajas que se activaran, "`./Banco #`", con este argumento se inicializa la interfaz grafica de del programa. 
 
 ![Screenshot](interfaz.png)
+(ejemplo con 5 cajas)
  
-En este mismo proceso se inicializa el semaforo que se destinara a las cajas, `cajas = sem_open(name_shm, O_CREAT, 0644, num_cajas)` en esta seccion, **num_cajas** es el argumento que se recibe al ejecutar el programa.
+En este mismo proceso se inicializa el semaforo que se destinara a las cajas, `cajas = sem_open(name_shm, O_CREAT, 0644, num_cajas)` en esta seccion, **num_cajas** es el argumento que se recibe al ejecutar el programa y **name_shm** es el nombre de el semaforo que es "smp".
+
+Despues de esto se crea la memoria compartida con el nombre "banco" y se le asigno la siguiente estructura:
+
+```
+typedef struct{//creamos una estructura la cual tendra los items de la memoria compartida
+    int bandera1;
+    int bandera2;
+    int num_cajas;
+    char nombre[81];
+    int cedula;
+    int caja_actual;
+}item;
+```
+
+
 
 
 # Conclusiones:
