@@ -32,7 +32,8 @@ En este mismo proceso se inicializa el semaforo que se destinara a las cajas, `c
 Despues de esto se crea la memoria compartida con el nombre "banco" y se le asigno la siguiente estructura:
 
 ```
-typedef struct{//creamos una estructura la cual tendra los items de la memoria compartida
+typedef struct{
+
     int bandera1;
     int bandera2;
     int num_cajas;
@@ -41,9 +42,32 @@ typedef struct{//creamos una estructura la cual tendra los items de la memoria c
     int caja_actual;
 }item;
 ```
+Se inicializan las banderas bandera1 y bandera2 con 0 y se le asigna a num_cajas el argumento que se recibio desde la consola; despues de esto se crea un hilo que apunta a una funcion llamada **proceso** en la que se hace todo lo referente a lectura de banderas y mostrar los cambios en la interfaz grafica. Despues de crear el hilo el programa ejecuta la instruccion `return a.exec()` que se encarga de mostrar la interfaz grafica.
 
+En este momento todo lo referente 
 
+```
+if(datos_cliente->bandera1==1){
+    for(int i=0;i<10;i++){
+        if(cajas[i]==0){
+            cajas[i]=1;
+            datos_cliente->caja_actual=i;
+            conta=i;
+            i=10;
+        }
+    }
+    usleep(100);
+    a1=QString::number(datos_cliente->cedula);
+    w->mostrar(datos_cliente->nombre,a1,conta);
+    conta++;
 
+}else if(datos_cliente->bandera2==1){
+    cajas[datos_cliente->caja_actual]=0;
+    a1=QString::number(0);
+    w->mostrar("vacio",a1,datos_cliente->caja_actual);
+    datos_cliente->bandera2=0;
+}
+```
 
 # Conclusiones:
 	
